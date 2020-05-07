@@ -34,11 +34,12 @@ def draw_board(board):
         for column in range(60):
             board_row += board[column][row]
 
+        # превращаем в строку %s , экранируем символы, делаем по шаблону '%s%s %s %s'
         print('%s%s %s %s' % (extra_space, row, board_row, row))
     print('  ' + tens_distance_line)
     print('  ' + '0123456789' * 6)
     print()
-        # превращаем в строку %s , экранируем символы, делаем по шаблону '%s%s %s %s'
+
 
 
 
