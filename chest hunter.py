@@ -58,7 +58,7 @@ def is_on_board(x, y):
 def make_move(chests, board, x, y):
     small_distance = 100
     for cx, cy in chests:
-        distance = math.sqrt((cx-x)**2 + (cy-y)**2)
+        distance = math.sqrt((cx - x) ** 2 + (cy - y) ** 2)
 
         if distance < small_distance:
             small_distance = distance
@@ -76,16 +76,22 @@ def make_move(chests, board, x, y):
             return 'сундук не зоны видимости гидролокатора'
 
 
+def enter_player_move(previous_moves):
+    print('где следует опустить гидролокатор? координаты: (0-59)(0-14). для выхода ввведите: Х')
+    while True:
+        move = input()
+        if move.lower() == 'x':
+            print('Спасибо за игру')
+            sys.exit()
+        move = move.split()
+        if len(move) == 2 and move[0].isdigit() and move[1].isdigit() and is_on_board(int(move[0]), int(move[1])):
+            if [int(move[0]), int(move[1])] in previous_moves:
+                print('сдесь уже есть гидролокатор')
+                continue
+            else:
+                return [int(move[0]), int(move[1])]
 
-
-
-
-
-
-
-
-
-
+        print("Введите число от 0 до 59 , а затем от 0 до 14")
 
 
 
